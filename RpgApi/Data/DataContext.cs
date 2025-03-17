@@ -37,5 +37,10 @@ namespace RpgApi.Data
         {
             configurationBuilder.Properties<string>().HaveColumnType("varchar").HaveMaxLength(200);
         }
+
+        internal async Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
