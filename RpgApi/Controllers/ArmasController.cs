@@ -11,25 +11,24 @@ namespace RpgApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PersonagensController : ControllerBase
+    public class ArmasController : ControllerBase
     {
         private readonly DataContext _context;
 
-
-        public PersonagensController(DataContext context)
+        public ArmasController(DataContext context)
         {
             _context = context;
         }
 
-        [HttpGet("{id}")] //Buscar pelo id
+         [HttpGet("{id}")] //Buscar pelo id
         public async Task<IActionResult> GetSingle(int id)
         {
             try
             {
-                Personagem p = await _context.TB_PERSONAGENS
-                            .FirstOrDefaultAsync(pBusca => pBusca.Id == id);
+                Arma a = await _context.TB_ARMAS.FirstOrDefaultAsync(aBusca => aBusca.Id == id);
+                //using Microsoft.EntityFrameworkCore;
 
-                return Ok(p);
+                return Ok(a);
             }
             catch (System.Exception ex)
             {
@@ -42,7 +41,8 @@ namespace RpgApi.Controllers
         {
             try
             {
-                List<Personagem> lista = await _context.TB_PERSONAGENS.ToListAsync();
+                //using System.Collections.Generic;
+                List<Arma> lista = await _context.TB_ARMAS.ToListAsync();
                 return Ok(lista);
             }
             catch (System.Exception ex)
@@ -52,14 +52,17 @@ namespace RpgApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Personagem novoPersonagem)
+        public async Task<IActionResult> Add(Arma novaArma)
         {
             try
-            {
-                await _context.TB_PERSONAGENS.AddAsync(novoPersonagem);
+            {               
+                if(novaArma.Dano == 0)
+                  throw new Exception("O Dano da arma não pode ser 0");
+
+                await _context.TB_ARMAS.AddAsync(novaArma);
                 await _context.SaveChangesAsync();
 
-                return Ok(novoPersonagem.Id);
+                return Ok(novaArma.Id);
             }
             catch (System.Exception ex)
             {
@@ -68,14 +71,14 @@ namespace RpgApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Personagem novoPersonagem)
+        public async Task<IActionResult> Update(Arma novaArma)
         {
             try
             {
-                _context.TB_PERSONAGENS.Update(novoPersonagem);
-                int linhasAfetadas = await _context.SaveChangesAsync();
+                _context.TB_ARMAS.Update(novaArma);
+                int linhaAfetadas = await _context.SaveChangesAsync();
 
-                return Ok(linhasAfetadas);
+                return Ok(linhaAfetadas);
             }
             catch (System.Exception ex)
             {
@@ -88,10 +91,11 @@ namespace RpgApi.Controllers
         {
             try
             {
-                Personagem? pRemover = await _context.TB_PERSONAGENS.FirstOrDefaultAsync(p => p.Id == id);
+                Arma aRemover = await _context.TB_ARMAS.FirstOrDefaultAsync(p => p.Id == id);
 
-                _context.TB_PERSONAGENS.Remove(pRemover);
+                _context.TB_ARMAS.Remove(aRemover);
                 int linhaAfetadas = await _context.SaveChangesAsync();
+
                 return Ok(linhaAfetadas);
             }
             catch (System.Exception ex)

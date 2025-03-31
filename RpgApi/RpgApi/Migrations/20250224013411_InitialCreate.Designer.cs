@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpgApi.Data;
 
@@ -10,9 +11,11 @@ using RpgApi.Data;
 namespace RpgApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250224013411_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,71 +23,6 @@ namespace RpgApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("RpgApi.Models.Arma", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Dano")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("Varchar");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_ARMAS", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Dano = 35,
-                            Nome = "Arco e Flecha"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Dano = 33,
-                            Nome = "Espada"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Dano = 31,
-                            Nome = "Machado"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Dano = 30,
-                            Nome = "Punho"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Dano = 34,
-                            Nome = "Chicote"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Dano = 33,
-                            Nome = "Foice"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Dano = 32,
-                            Nome = "Cajado"
-                        });
-                });
 
             modelBuilder.Entity("RpgApi.Models.Personagem", b =>
                 {
