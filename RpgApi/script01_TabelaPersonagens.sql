@@ -11,7 +11,7 @@ GO
 BEGIN TRANSACTION;
 CREATE TABLE [TB_PERSONAGENS] (
     [Id] int NOT NULL IDENTITY,
-    [Nome] varchar(200) NOT NULL,
+    [Nome] Varchar(200) NOT NULL,
     [PontosVida] int NOT NULL,
     [Forca] int NOT NULL,
     [Defesa] int NOT NULL,
@@ -34,7 +34,7 @@ IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Clas
     SET IDENTITY_INSERT [TB_PERSONAGENS] OFF;
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20250310113249_InitialCreate', N'9.0.2');
+VALUES (N'20250224013411_InitialCreate', N'9.0.2');
 
 COMMIT;
 GO
