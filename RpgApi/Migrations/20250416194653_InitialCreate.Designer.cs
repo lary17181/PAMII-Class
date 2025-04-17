@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpgApi.Data;
 
@@ -11,9 +12,11 @@ using RpgApi.Data;
 namespace RpgApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250416194653_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -405,8 +408,8 @@ namespace RpgApi.Migrations
                             Email = "seuEmail@gmail.com",
                             Latitude = -23.520024100000001,
                             Longitude = -46.596497999999997,
-                            PasswordHash = new byte[] { 34, 7, 89, 100, 88, 203, 80, 101, 255, 9, 210, 129, 234, 148, 88, 145, 223, 235, 207, 202, 191, 202, 217, 73, 99, 140, 112, 127, 163, 83, 71, 139, 70, 214, 79, 41, 178, 136, 71, 102, 61, 224, 135, 105, 83, 189, 208, 41, 174, 149, 116, 104, 241, 31, 50, 49, 255, 152, 247, 94, 69, 67, 201, 66 },
-                            PasswordSalt = new byte[] { 55, 59, 249, 81, 99, 105, 96, 82, 15, 54, 7, 251, 72, 33, 233, 123, 236, 254, 197, 235, 3, 138, 122, 178, 30, 254, 33, 141, 76, 29, 3, 105, 224, 111, 49, 212, 181, 116, 14, 226, 164, 186, 78, 8, 113, 48, 27, 212, 200, 246, 60, 125, 43, 81, 84, 76, 160, 185, 154, 75, 161, 114, 228, 66, 150, 101, 236, 225, 192, 101, 134, 17, 75, 222, 181, 139, 57, 146, 200, 131, 26, 158, 150, 69, 162, 193, 3, 184, 73, 171, 87, 228, 222, 89, 244, 222, 6, 130, 195, 252, 143, 81, 21, 129, 254, 195, 165, 20, 114, 203, 219, 171, 79, 93, 57, 148, 159, 238, 36, 125, 5, 223, 185, 134, 105, 92, 233, 166 },
+                            PasswordHash = new byte[] { 16, 254, 31, 14, 9, 251, 16, 123, 150, 31, 207, 138, 227, 37, 164, 142, 144, 96, 17, 103, 102, 21, 78, 234, 54, 49, 156, 237, 135, 175, 152, 76, 167, 236, 190, 170, 55, 176, 13, 68, 193, 176, 254, 8, 223, 116, 155, 48, 22, 77, 91, 199, 43, 57, 208, 34, 49, 222, 17, 47, 23, 249, 184, 91 },
+                            PasswordSalt = new byte[] { 51, 106, 102, 39, 121, 238, 2, 150, 88, 124, 253, 3, 106, 238, 88, 25, 119, 21, 31, 26, 75, 121, 204, 179, 242, 156, 84, 217, 228, 141, 8, 48, 94, 169, 69, 93, 122, 76, 205, 126, 79, 81, 102, 141, 136, 178, 103, 195, 20, 100, 143, 212, 136, 75, 10, 44, 23, 175, 14, 7, 191, 56, 114, 29, 110, 79, 137, 237, 25, 108, 178, 86, 173, 90, 220, 31, 188, 174, 83, 72, 94, 109, 101, 34, 72, 3, 204, 191, 115, 55, 168, 244, 28, 186, 182, 206, 165, 193, 50, 219, 212, 0, 207, 44, 89, 118, 148, 156, 252, 234, 196, 112, 194, 19, 191, 71, 174, 253, 64, 155, 88, 52, 156, 19, 8, 192, 199, 74 },
                             Perfil = "Admin",
                             Username = "UsuarioAdmin"
                         });

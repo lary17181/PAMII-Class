@@ -35,7 +35,7 @@ namespace RpgApi.Data
             modelBuilder.Entity<Personagem>().ToTable("TB_PERSONAGENS");
             modelBuilder.Entity<Arma>().ToTable("TB_ARMAS");
             modelBuilder.Entity<Usuario>().ToTable("TB_USUARIOS");
-            modelBuilder.Entity<Habilidade>().ToTable("TB_HABILIDADE");
+            modelBuilder.Entity<Habilidade>().ToTable("TB_HABILIDADES");
             modelBuilder.Entity<PersonagemHabilidade>().ToTable("TB_PERSONAGENS_HABILIDADES");
             
             modelBuilder.Entity<Personagem>().HasData

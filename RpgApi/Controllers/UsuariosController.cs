@@ -37,6 +37,8 @@ namespace RpgApi.Controllers
             {
                 if(await UsuarioExistente(user.Username))
                     throw new System.Exception("Nome de usuário já existe");
+
+                user.Id=0;
                 Criptografia.CriarPasswordHash(user.PasswordString, out byte[] hash, out byte[] salt);
                 user.PasswordString = string.Empty;
                 user.PasswordHash = hash;
