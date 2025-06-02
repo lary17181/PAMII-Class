@@ -1,5 +1,6 @@
 ﻿using AppRpgEtec.Models;
 using AppRpgEtec.Services.Usuarios;
+using AppRpgEtec.Views.Personagens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,29 +28,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
             RegistrarCommand = new Command(async () => await RegistrarUsuario());
             DirecionarCadastroCommand = new Command(async () => await DirecionarParaCadastro());
         }
-        #region AtributosPropriedades
 
-        private string login = string.Empty;
-        public string Login
-        {
-            get { return login; }
-            set
-            {
-                login = value;
-                OnPropertyChanged();
-            }
-        }
-        private string senha = string.Empty;
-        public string Senha
-        {
-            get { return senha; }
-            set
-            {
-                senha = value;
-                OnPropertyChanged();
-            }
-        }
-        #endregion
         #region AtributosPropriedades
         private string login = string.Empty;
         private string senha = string.Empty;
@@ -100,7 +79,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
                     await Application.Current.MainPage
                         .DisplayAlert("Informação", mensagem, "Ok");
 
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new Views.Personagens.ListagemView();
                 }
                 else
                 {
