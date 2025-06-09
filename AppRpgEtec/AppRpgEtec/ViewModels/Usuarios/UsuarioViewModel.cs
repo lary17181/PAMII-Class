@@ -21,14 +21,14 @@ namespace AppRpgEtec.ViewModels.Usuarios
             _uService = new UsuarioService();
             InicializarCommands();
         }
-
         public void InicializarCommands()
         {
             AutenticarCommand = new Command(async () => await AutenticarUsuario());
             RegistrarCommand = new Command(async () => await RegistrarUsuario());
             DirecionarCadastroCommand = new Command(async () => await DirecionarParaCadastro());
         }
-
+        
+            
         #region AtributosPropriedades
         private string login = string.Empty;
         private string senha = string.Empty;

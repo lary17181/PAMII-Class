@@ -8,6 +8,7 @@ using System.Windows.Input;
 using AppRpgEtec.Models;
 using AppRpgEtec.Models.Enuns;
 using AppRpgEtec.Services.Personagens;
+using Microsoft.Azure.WebJobs.Host.Bindings;
 
 namespace AppRpgEtec.ViewModels
 {
@@ -192,6 +193,16 @@ namespace AppRpgEtec.ViewModels
                 await Application.Current.MainPage
                     .DisplayAlert("Ops", ex.Message + "Detalhes: " + ex.InnerException, "Ok");
             }
+
+        }
+        private CadastroPersonagemViewModel cadViewModel;
+        public CadastroPersonagemViewModel()
+        {
+            IniatilizeComponent();
+
+            cadViewModel = new CadastroPersonagemViewModel();
+            BindingContext = cadViewModel;
+            Title = "Novo Personagem";
 
         }
     }

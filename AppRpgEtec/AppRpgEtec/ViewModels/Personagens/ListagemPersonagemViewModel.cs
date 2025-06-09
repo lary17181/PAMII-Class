@@ -21,7 +21,10 @@ namespace AppRpgEtec.ViewModels.Personagens
             Personagens = new ObservableCollection<Personagem>();
             
             _ = ObterPersonagens();
+
+            NovoPersonagem = new Command(async () => { await ExibirCadastroPersonagem(); });
         }
+        public ICommand NovoPersonagemCommand { get; }
         public async Task ObterPersonagens()
         {
             try //Junto com o Cacth evitará que erros fechem o aplicativo
@@ -35,6 +38,16 @@ namespace AppRpgEtec.ViewModels.Personagens
                 await Application.Current.MainPage
                     .DisplayAlert("Ops", ex.Message + " Detalhes: " + ex.InnerException, "Ok");
             }
+        }
+        public async Task ExibirCadastroPersonagem()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("cadPersonagemView");
+            }
+            catch (Exception ex) {
+                await Application.Current.MainPage
+                    .DisplayAlert("Ops", ex.Message + "Detalhes" + ex.InnerException, "Ok");
         }
 
 

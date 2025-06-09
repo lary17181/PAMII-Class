@@ -1,3 +1,5 @@
+using AppRpgEtec.ViewModels;
+
 namespace AppRpgEtec.Views.Personagens;
 
 public partial class CadastroPersonagemView : ContentPage
@@ -6,4 +8,15 @@ public partial class CadastroPersonagemView : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private CadastroPersonagemViewModel cadViewModel;
+    public CadastroPersonagemViewModel()
+    {
+        InitializeComponent();
+
+        cadViewModel = new CadastroPersonagemViewModel();
+        BindingContext = cadViewModel;
+        Title = "Novo Personagem";
+
+    
 }
