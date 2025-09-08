@@ -31,11 +31,7 @@ HeightRequest="80" WidthRequest="80" >
     </Shell.FlyoutHeaderTemplate>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
 
-        <ShellContent
-        Title="Home"
-        Icon="home.png"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+
     <ShellContent
        Title="Usuarios"
        Icon="menuusuarios.png"
