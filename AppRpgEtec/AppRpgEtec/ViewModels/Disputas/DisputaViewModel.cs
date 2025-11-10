@@ -1,4 +1,5 @@
-﻿using AppRpgEtec.Models;
+//Jefferson Alexandre e Larissa Cunha
+using AppRpgEtec.Models;
 using AppRpgEtec.Services.Personagens;
 using System;
 using System.Collections.Generic;
