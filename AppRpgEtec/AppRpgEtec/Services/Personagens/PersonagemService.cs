@@ -1,4 +1,5 @@
-﻿using AppRpgEtec.Models;
+//Jefferson Alexandre e Larissa Cunha
+using AppRpgEtec.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
