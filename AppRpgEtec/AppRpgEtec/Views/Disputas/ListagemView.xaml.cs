@@ -1,3 +1,4 @@
+//Jefferson Alexandre e Larissa Cunha
 using AppRpgEtec.ViewModels.Disputas;
 
 namespace AppRpgEtec.Views.Disputas;
