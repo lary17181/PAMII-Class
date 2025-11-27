@@ -11,7 +11,7 @@ namespace AppRpgEtec.Services.Disputas
     {
         private readonly Request _request;
         private string _token;
-        private const string _apiUrlBase = "socorro";
+        private const string _apiUrlBase = "https://rpglarissajefferson-braue0hjgsb4d3gq.brazilsouth-01.azurewebsites.net/Disputas";
         public DisputaService(string token)
         {
             _request=new Request();
