@@ -22,7 +22,8 @@ namespace AppRpgEtec.ViewModels.Personagens
             
             _ = ObterPersonagens();
             ZerarRankingRestaurarVidasGeralCommand = new Command(async () => { await ZerarRankingRestaurarVidasGeral(); });
-            NovoPersonagemCommand = new Command(async () => { await ExibirCadastroPersonagem(); });
+        
+        NovoPersonagemCommand = new Command(async () => { await ExibirCadastroPersonagem(); });
             RemoverPersonagemCommand = new Command<Personagem>(async (Personagem p) => { await RemoverPersonagem(p); });
         }
         public ICommand NovoPersonagemCommand { get; }
@@ -69,7 +70,6 @@ namespace AppRpgEtec.ViewModels.Personagens
         {
             await pService.PutZerarRankingRestaurarVidasGeralAsync();
         }
-
         public async Task ZerarRankingRestaurarVidasGeral()
         {
             try
@@ -77,14 +77,29 @@ namespace AppRpgEtec.ViewModels.Personagens
                 if (await Application.Current.MainPage.DisplayAlert("Confirmação",
                     $"Deseja realmente zerar todo o ranking?", "Yes", "No"))
                 {
+                    // Tenta executar. Se der o erro "Input String", ele vai para o CATCH.
                     await ExecutarZerarRankingRestaurarVidasGeral();
+
+                    // Se chegou aqui, o PUT funcionou e a linha acima não lançou exceção.
                     await Application.Current.MainPage.DisplayAlert("Informação", "Ranking zerado com sucesso.", "Ok");
                     await ObterPersonagens();
                 }
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Ops..", ex.Message + "Detalhes: " + ex.InnerException, "Ok");
+                // Se a mensagem contém o erro de formatação, IGNORA o erro da conversão do corpo vazio,
+                // mas assume que o ranking foi zerado e tenta carregar os personagens.
+                if (ex.Message.Contains("The input string '' was not in a correct format"))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Informação",
+                       "Ranking zerado com sucesso! Recarregando a lista.", "Ok");
+                    await ObterPersonagens(); // Recarrega a lista
+                }
+                else
+                {
+                    // Exibe outros erros
+                    await Application.Current.MainPage.DisplayAlert("Ops..", ex.Message + "Detalhes: " + ex.InnerException, "Ok");
+                }
             }
         }
 

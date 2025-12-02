@@ -76,7 +76,7 @@ namespace AppRpgEtec.Services.Personagens
         {
             string urlComplementar = "/ZerarRankingRestaurarVidas";
             var result = await _request.PutAsync(apiUrlBase + urlComplementar, new Personagem(), _token);
-            return result;
+            return result; // <--- Tenta retornar um INT
         }
 
         public async Task<int> DeletePersonagemAsync(int personagemId)
